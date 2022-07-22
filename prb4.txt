@@ -1,0 +1,30 @@
+class CustomList {
+  constructor(data) {
+    this.list = data;
+  }
+  insertFirst(data) {
+    this.list.unshift(data);
+  }
+  insertLast(data) {
+    this.list.push(data);
+  }
+  getFirst() {
+    return "First: " + this.list[0];
+  }
+  getLast() {
+    return "Last: " + this.list.pop();
+  }
+}
+
+let doggos = new CustomList(["Golden", "Husky", "Bichon", "Labrador"]);
+
+console.log(doggos.getFirst());
+console.log(doggos.getLast());
+doggos.insertFirst("Ausie");
+console.log(doggos.getFirst());
+doggos.insertFirst("Pug");
+console.log(doggos.getFirst());
+doggos.insertLast("Pitbull");
+console.log(doggos.getLast());
+doggos.insertFirst("Bulldog");
+console.log(doggos.getFirst());

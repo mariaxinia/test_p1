@@ -1,0 +1,21 @@
+let dog1 = {
+  a: 1,
+  b: 2
+};
+let dog2 = {
+  c: 3,
+  d: 4
+};
+
+//spread syntax
+function mergeObj(x,y){
+  let dog3={...x,...y};
+  console.log(dog3);
+}
+mergeObj(dog1,dog2)
+
+
+
+// //easy way
+// const dog3 = Object.assign(dog1, dog2);
+// console.log(dog3);

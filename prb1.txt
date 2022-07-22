@@ -1,0 +1,35 @@
+let romania = {
+  population: 7234,
+  food: "sarmale"
+};
+let germania = {
+  population: 4321,
+  food: "donner"
+};
+let china = {
+  population: 95695,
+  food: "noodles"
+};
+
+const countries = [romania, germania, china];
+
+let a = countries.sort((a, b) => {
+  return a.population - b.population;
+});
+console.log(a);
+
+// //varianta cu reduce + distr
+// const [{population: pop1},{population: pop2},{population: pop3}] = countries;
+// let arr = [pop1,pop2,pop3];
+// const sortWithReduce = arr => {
+//   return arr.reduce((acc, val) => {
+//      let ind = 0;
+//      while(ind < arr.length && val < arr[ind]){
+//         ind++;
+//      }
+//      acc.splice(ind, 0, val);
+//      return acc;
+//   }, []);
+// };
+// const aux = sortWithReduce(arr);
+// console.log(aux.reverse());

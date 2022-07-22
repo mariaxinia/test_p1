@@ -1,0 +1,46 @@
+let values = ["Alf", "Ben", "Allice","Cristi","Ana"];
+
+function groupStr(value) {
+  let keys = [];
+  let app = [0,0,0];
+  let i = 0;
+  let finalValues=[],finalKeys=[];
+  value.map(function (elem) {
+    keys[i] = elem.charAt(0).toLowerCase();
+    i++;
+  });
+
+  const noDupKey= new Set(keys);
+  noDupKey.forEach((elem)=>{
+    finalKeys.push(elem)
+  });
+  //console.log(finalKeys);
+
+  finalKeys.forEach((elem, index)=>{
+    let aux=[];
+    let indexAux=0;
+    for(let j=0;j<keys.length;j++)
+    {
+      if(elem==keys[j])
+      {
+        aux = aux.concat(values[j]);
+      }
+    }
+    //console.log(aux);
+    finalValues.push(aux);
+  });
+  //console.log(finalValues)
+
+ 
+  function convertToObj(a, b){
+    if(a.length != b.length || a.length == 0 || b.length == 0){
+      return null;
+    }
+     
+    // Using Object.assign method
+    return Object.assign(...a.map((k, i)=>({[k]: b[i]}) ))
+  }
+  
+  return convertToObj(finalKeys, finalValues);
+}
+console.log(groupStr(values));

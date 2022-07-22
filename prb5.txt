@@ -1,0 +1,19 @@
+let n1 = 153;
+let n2 = 152;
+function Armstrong(n) {
+  let sum = 0;
+  let str = n.toString();
+  let pow = str.length;
+  for(let i=0;i<pow;i++){
+    let cifra=parseInt(str[i])
+    sum+=Math.pow(cifra, pow);
+  }
+  if(sum==n)
+  {
+    return true;
+  }
+  return false;
+  
+}
+console.log(Armstrong(n1));
+console.log(Armstrong(n2));
