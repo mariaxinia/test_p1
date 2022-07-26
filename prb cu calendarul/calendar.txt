@@ -1,0 +1,71 @@
+import "./styles.css";
+const jsonFile = require("./date.json");
+console.log(jsonFile);
+
+function names(jsonFile) {
+  let n = jsonFile.length;
+  let auxNames = [];
+  for (let i = 0; i < n; i++) {
+    if (jsonFile[i].date != null) {
+      auxNames.push(jsonFile[i].from);
+    }
+  }
+  let aux = new Set(auxNames);
+  let namesFinal = [];
+  aux.forEach((elem) => {
+    namesFinal.push(elem);
+  });
+  //console.log(namesFinal);
+  return namesFinal;
+}
+let namesFinal = names(jsonFile);
+
+function See(names, json) {
+  let length = names.length;
+  let n = json.length;
+  for (let i = 0; i < length; i++) {
+    let aux = names[i];
+    names[i] = names[i] + ": [";
+    for (let a = 6; a <= 9; a++) {
+      if (a == 7 || a == 8) {
+        for (let b = 1; b <= 31; b++) {
+          let ok = 0;
+          for (let j = 0; j < n; j++) {
+            let day = parseInt(jsonFile[j].date[8] + jsonFile[j].date[9]);
+            let month = parseInt(jsonFile[j].date[5] + jsonFile[j].date[6]);
+            if (a === month && b == day && aux === json[j].from) {
+              ok = 1;
+            }
+          }
+          if (ok == 1) {
+            names[i] = names[i] + "=";
+          }
+          if (ok == 0) {
+            names[i] = names[i] + "-";
+          }
+        }
+      } else {
+        for (let b = 1; b <= 30; b++) {
+          let ok = 0;
+          for (let j = 0; j < n; j++) {
+            let day = parseInt(jsonFile[j].date[8] + jsonFile[j].date[9]);
+            let month = parseInt(jsonFile[j].date[5] + jsonFile[j].date[6]);
+            if (a === month && b == day && aux === json[j].from) {
+              ok = 1;
+            }
+          }
+          if (ok == 1) {
+            names[i] = names[i] + "=";
+          }
+          if (ok == 0) {
+            names[i] = names[i] + "-";
+          }
+        }
+      }
+    }
+    names[i] = names[i] + "]";
+    console.log(names[i]);
+  }
+}
+See(namesFinal, jsonFile);
+
